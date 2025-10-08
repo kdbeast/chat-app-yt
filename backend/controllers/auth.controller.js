@@ -1,6 +1,6 @@
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
-// import generateTokenAndSetCookie from "../utils/generateToken.js";
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
@@ -17,8 +17,8 @@ export const signup = async (req, res) => {
     }
 
     // HASH PASSWORD HERE
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // https://avatar-placeholder.iran.liara.run/
 
@@ -28,14 +28,14 @@ export const signup = async (req, res) => {
     const newUser = new User({
       fullName,
       username,
-      password,
+      password: hashedPassword,
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
     });
 
     if (newUser) {
       // Generate JWT token here
-    //   generateTokenAndSetCookie(newUser._id, res);
+      generateTokenAndSetCookie(newUser._id, res);
       await newUser.save();
 
       res.status(201).json({
