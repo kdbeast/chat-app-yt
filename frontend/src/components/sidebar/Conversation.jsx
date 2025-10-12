@@ -1,4 +1,4 @@
-import useConversation from "../../useConversation";
+import useConversation from "../../zustand/useConversation";
 
 const Conversation = ({ conversation, lastIdx, emoji }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
