@@ -4,7 +4,9 @@
   "description": "��#\u0000 \u0000c\u0000h\u0000a\u0000t\u0000-\u0000a\u0000p\u0000p\u0000-\u0000y\u0000t\u0000\r\u0000 \u0000",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.0",
+    "path": "^0.12.7",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
