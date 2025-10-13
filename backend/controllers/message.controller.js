@@ -29,7 +29,7 @@ export const sendMessage = async (req, res) => {
     }
 
     await Promise.all([conversation.save(), newMessage.save()]);
-    
+
     // SOCKET IO FUNCTIONALITY WILL GO HERE
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
@@ -54,7 +54,7 @@ export const getMessage = async (req, res) => {
     }).populate("messages");
 
     if (!conversation) {
-      return res.status(200).json({ messages: [] });
+      return res.status(200).json([]);
     }
 
     const messages = conversation.messages;
